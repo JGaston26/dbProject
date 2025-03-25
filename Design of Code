@@ -1,0 +1,5 @@
+Needs a class to handle specifications:
+  Teacher:
+    Can only be in one place at a time
+  Student:
+    Can only be in one place at a time
