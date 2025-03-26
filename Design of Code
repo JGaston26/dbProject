@@ -1,5 +1,30 @@
 Needs a class to handle specifications:
   Teacher:
     Can only be in one place at a time
+    Has a department
+    Has a name
+    Has an Id
   Student:
     Can only be in one place at a time
+    Has an Id
+  Department:   
+    Department IDs are in this order:
+        Biology (1)
+        Chemistry
+        Computer Science
+        English
+        Health and PE
+        Mathematics
+        Physics
+        Social Studies
+        Special Education
+        Visual and Performing Arts
+        Foreign Languages and ENL
+        College Office Staff List
+        COSA
+        Guidance Counselors
+        Health and Safety (15)
+  Course:
+    Type IDs are as follows:
+        Minor (1)
+        Major (2)

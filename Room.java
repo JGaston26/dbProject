@@ -3,8 +3,10 @@ import java.util.Arrays;
 
 public class Room {
     private ArrayList<Integer> availablePeriods = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
-    public int id;
-    public Room(int initID){
+    private int id;
+    private String name;
+    public Room(int initID, String name){
+        this.name=name;
         id=initID;
     }
 

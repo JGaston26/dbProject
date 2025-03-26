@@ -5,17 +5,51 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //returns all students to List
-        ArrayList<String> students = getFileData("dbProject-main/Students");
-        //returns all NON DUPE teachers to List
-        ArrayList<String> teacherData = getFileData("dbProject-main/TeachersAndDepartments");
-        System.out.println(teacherData);
-        System.out.println(students);
+        ArrayList<String> studentNames = getFileData("Students");
+        ArrayList<String> teacherNames = getFileData("TeachersAndDepartments"); //no dupes
+        ArrayList<String> roomNames = getFileData("Rooms");
 
+        ArrayList<Teacher> teacherData = createTeachers(teacherNames);
+        ArrayList<Student> studentData = createStudents(studentNames);
+        ArrayList<Room> roomData = createRooms(roomNames);
+        System.out.println(teacherData);
+        System.out.println(studentData);
+        System.out.println(roomData);
     }
 
+    public static ArrayList<Teacher> createTeachers(ArrayList<String> teacherNames){
+        ArrayList<Teacher> returnList = new ArrayList<>();
+        int deptId=1;
+        int teacherId=1;
+        for(String name: teacherNames){
+            if(name.equals("NEWDEPT")){deptId++;}
+            else{
+                returnList.add(new Teacher(name,deptId,teacherId));
+                teacherId++;
+            }
 
-
+        }
+        return returnList;
+    }
+    public static ArrayList<Student> createStudents(ArrayList<String> studentNames) {
+        ArrayList<Student> returnList = new ArrayList<>();
+        int deptId=1;
+        int studentId=1;
+        for(String name: studentNames){
+            returnList.add(new Student(studentId));
+            studentId++;
+        }
+        return returnList;
+    }
+    public static ArrayList<Room> createRooms(ArrayList<String> rooms){
+        ArrayList<Room> returnList = new ArrayList<>();
+        int roomId=1;
+        for(String name: rooms){
+            returnList.add(new Room(roomId, name));
+            roomId++;
+        }
+        return returnList;
+    }
     public static ArrayList<String> getFileData(String fileName) {
         ArrayList<String> fileData = new ArrayList<String>();
         try {

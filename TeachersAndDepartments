@@ -1,5 +1,4 @@
-//IMPORTANT - DO NOT INCLUDE DUPE NAMES
-#Biology
+DEPARTMENTBiology
 Ms. Angelene Alberga
 Mr. James Bacchi
 Ms. Victoria Cheng
@@ -20,7 +19,7 @@ Mrs. Caitlin Reste
 Ms. Jessica Tagliarino
 Mr. Devin Thomas
 Hyejin Yang
-#Chemistry
+DEPARTMENTChemistry
 Ms. Zonia Adalat
 Ms. Lisa Carter Serrette
 Mr. Callistus Chiemezie
@@ -39,7 +38,7 @@ Mr. Conrad Richman
 Ms. Shirley Shameen
 Dr. Joseph Shtab
 Dr. Horace Walcott
-#Computer Science
+DEPARTMENTComputer Science
 Ms. Vickie Albury
 Mr. Carlos Blackwood
 Mr. Michael Boulis
@@ -61,7 +60,7 @@ Ms. Marina Moshchenko
 Dr. Thomas Price
 Mr. Ivan Turner
 Ms. Tiffany Wong
-#English
+DEPARTMENTEnglish
 Mr. Matthew Adelizzi
 Mr. Samuel Armen
 Ms. Erin Beach
@@ -105,7 +104,7 @@ Mr. Adam Virzi
 Mr. Israel Wasserstein
 Mr. David Whitman
 Ms. Irene Yannascoli
-#Health and PE
+DEPARTMENTHealth and PE
 Mrs. Lucy Balansag
 Ms. A Besler
 Mr. Todd Bloom
@@ -123,7 +122,7 @@ Ms. Joy San Agustin
 Ms. Carla Sigona
 Ms. Nicole Stuart
 Mr. Derek Swartz
-#Mathematics
+DEPARTMENTMathematics
 Ms. Christina Aguis
 Mr. James Bathurst
 Ms. Melanie Battles
@@ -161,7 +160,7 @@ Mr. Dustin Shutes
 Mr. Steven Stein
 Ms. Lydia Yale
 Ms. Patricia Yee
-#Physics
+DEPARTMENTPhysics
 Mr. David Adams
 Mr. Mohammed Alomeri
 Mr. Rashidul Bari
@@ -178,7 +177,7 @@ Mr. Rivera Samuel
 Ms. Rachel Sardo
 Mr. Jose Vargas
 Ms. Nancy Yi
-#Social Studies
+DEPARTMENTSocial Studies
 Mr. Steven Apollon
 Mr. Serge Avery
 Mr. Alan Barbour
@@ -234,11 +233,11 @@ Mr. Luis Vergara
 Mr. Thomas Wentworth
 Ms. Rachel Worrell
 Maria Zagoreos
-#Special Education
+DEPARTMENTSpecial Education
 Edward Abdenour
 Mr. Tim Monti‑Wohlpart
 Ms. Lisa O'Kane
-#Visual and Performing Arts
+DEPARTMENTVisual and Performing Arts
 Mr. Barrington Bigsby
 Mr. Steve Coyle
 Mrs. Patricia DePinto
@@ -257,7 +256,7 @@ Mr. Alexander Tasopoulos
 Mr. Garfield Taylor
 Mr. Richard Wanliss
 Mr. Doug Weiner
-#Foreign Languages and ENL
+DEPARTMENTForeign Languages and ENL
 Ms. Ana Aguirre
 Ms. Michelle Albano
 Ms. Luz Rocio Cely
@@ -285,16 +284,7 @@ Ms. Nancy Villalba
 Ms. Ioana Wicker
 Ms. Xiaohong Wu
 Ms. Peihong Ye
-#College Office Staff List
-Mr. Serge Avery
-#COSA
-Ms. Christina Massie
-Ms. Monica Robinson‑Bynum
-Mr. Edwin Velazquez
-Maria Zagoreos
-#Guidance Counselors
-Mr. Tim Monti‑Wohlpart
-#Health and Safety
+DEPARTMENTHealth and Safety
 Ms. Angelene Alberga
 Mr. Elmer Anderson
 Ms. Lisa Carter Serrette

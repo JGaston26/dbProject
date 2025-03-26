@@ -1,17 +1,14 @@
 import java.util.ArrayList;
 import java.util.Arrays;
-public class Teacher {
-    private int department;
-    private int id;
-    private String name;
-    private ArrayList<Integer> availablePeriods = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
 
-    public Teacher(String name, int department, int id){
-        this.name=name;
-        this.department=department;
+public class Student {
+    private int id;
+
+    public Student(int id){
         this.id=id;
     }
 
+    private ArrayList<Integer> availablePeriods = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
     public void removePeriod(int period){
         ArrayList<Integer> returnArray = new ArrayList<>();
 
@@ -37,11 +34,5 @@ public class Teacher {
     }
     public int getId(){
         return id;
-    }
-    public String getName(){
-        return name;
-    }
-    public int getDepartment(){
-        return department;
     }
 }
