@@ -28,3 +28,15 @@ Needs a class to handle specifications:
     Type IDs are as follows:
         Minor (1)
         Major (2)
+  CourseOffering:
+    Can only be at one place at one time
+    Has a limited amount of space available (random between 1 and 5)
+    Has an Id
+    Has a Teacher ID for the room/period, tying into teachers 'one place at one time'
+    Has a courseId to specify which course is being offered (1 per coureOffering, which
+    will be offered multiple times)
+  Room:
+    Has an Id
+    Has a Name
+    Can only be used at one place at a time
+  
