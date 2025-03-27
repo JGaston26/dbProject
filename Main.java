@@ -29,6 +29,15 @@ public class Main {
             }
 
         }
+      /*
+      This doesn't work, gets up to Mr. Anderson at 276 and then gets an out-of-bounds error.
+       */
+        for(int i=0; i<=returnList.size(); i++){
+            System.out.println("INSERT INTO Teachers(TeacherID,TeacherName,DepartmentID) " +
+                    "VALUES (" + returnList.get(i).getId() +
+                    ", '" + returnList.get(i).getName() + "', " +
+                    returnList.get(i).getDepartment() + " );" );
+        }
         return returnList;
     }
     public static ArrayList<Student> createStudents(ArrayList<String> studentNames) {
@@ -68,4 +77,5 @@ public class Main {
             return fileData;
         }
     }
+
 }
