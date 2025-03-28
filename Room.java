@@ -10,6 +10,9 @@ public class Room {
         id=initID;
     }
 
+    public String getName(){
+        return name;
+    }
     public void removePeriod(int period){
         ArrayList<Integer> returnArray = new ArrayList<>();
 

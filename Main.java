@@ -9,10 +9,10 @@ public class Main {
         ArrayList<String> teacherNames = getFileData("TeachersAndDepartments"); //no dupes
         ArrayList<String> roomNames = getFileData("Rooms");
 
-        ArrayList<Teacher> teacherData = createTeachers(teacherNames);
+       // ArrayList<Teacher> teacherData = createTeachers(teacherNames);
         ArrayList<Student> studentData = createStudents(studentNames);
         ArrayList<Room> roomData = createRooms(roomNames);
-        System.out.println(teacherData);
+       // System.out.println(teacherData);
         System.out.println(studentData);
         System.out.println(roomData);
     }
@@ -29,10 +29,7 @@ public class Main {
             }
 
         }
-      /*
-      This doesn't work, gets up to Mr. Anderson at 276 and then gets an out-of-bounds error.
-       */
-        for(int i=0; i<=returnList.size(); i++){
+        for(int i=0; i<returnList.size(); i++){
             System.out.println("INSERT INTO Teachers(TeacherID,TeacherName,DepartmentID) " +
                     "VALUES (" + returnList.get(i).getId() +
                     ", '" + returnList.get(i).getName() + "', " +
@@ -48,6 +45,9 @@ public class Main {
             returnList.add(new Student(studentId));
             studentId++;
         }
+        for(int i=1; i< returnList.size(); i++){
+            System.out.println(returnList.get(i).getId());
+        }
         return returnList;
     }
     public static ArrayList<Room> createRooms(ArrayList<String> rooms){
@@ -56,6 +56,10 @@ public class Main {
         for(String name: rooms){
             returnList.add(new Room(roomId, name));
             roomId++;
+        }
+        for(int i=1; i< returnList.size(); i++){
+            System.out.println("INSERT INTO Rooms( RoomID, RoomName) VALUES " +
+                    "("+ i + ", '" + returnList.get(i).getName() + "');");
         }
         return returnList;
     }
