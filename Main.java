@@ -15,11 +15,11 @@ public class Main {
         ArrayList<Teacher> teacherData = createTeachers(teacherNames);
         ArrayList<Student> studentData = createStudents(studentNames);
         ArrayList<Room> roomData = createRooms(roomNames);
+        ArrayList<CourseOffering> courseOfferingData = createCourseOffering(courseData,teacherData,roomData);
 
-        // System.out.println(teacherData);
-        // System.out.println(studentData);
-        // System.out.println(roomData);
-        System.out.println(courseData);
+        System.out.println(courseOfferingData);
+        System.out.println(courseOfferingData.size());
+
     }
 
     public static ArrayList<Teacher> createTeachers(ArrayList<String> teacherNames){
@@ -97,13 +97,43 @@ public class Main {
         for(int i =0; i < teachers.size(); i++){
             Teacher currentTeacher = teachers.get(i);
             int room = 1;
-            CourseOffering currentCourseOffering = new CourseOffering((int)(Math.random()*courses.size()),currentTeacher,courseOfferingId,rooms.get(room));
-            while(!currentTeacher.getAvailablePeriods().isEmpty() && ){
-
+            int earliestAvailablePeriod = 1;
+            boolean terminate = false;
+            int timesAvailableRand = (int)(Math.random()*6);
+            for(int r = 0; r < timesAvailableRand; r++){
+                for(int j = 1; j < 11; j++){
+                    if(currentTeacher.getAvailablePeriods().contains((j)) && rooms.get(room).getAvailablePeriods().contains(j)){
+                        earliestAvailablePeriod=j;
+                        currentTeacher.removePeriod(j);
+                        rooms.get(room).removePeriod(j);
+                        break;
+                    }
+                    //max teacher + max rooms case
+                    if(room==rooms.size()-1 && currentTeacher==teachers.getLast() && j==10){
+                        terminate=true;
+                        break;
+                    }
+                    //max rooms, not maxed teachers case
+                    else if(room==rooms.size()-1 && j==10 && currentTeacher!=teachers.getLast()){
+                        currentTeacher=teachers.get(i+1);
+                        i++;
+                    }
+                    //maxed period case
+                    else if(j==10){
+                        room++;
+                        j=0;
+                    }
+                }
+                if(terminate)break;
             }
+            if(terminate)break;
+
+            CourseOffering currentCourseOffering = new CourseOffering((int)(Math.random()*courses.size()),currentTeacher,courseOfferingId,rooms.get(room));
+            courseOfferingId++;
+            returnList.add(currentCourseOffering);
         }
 
-        return null;
+        return returnList;
     }
     public static ArrayList<String> getFileData(String fileName) {
         ArrayList<String> fileData = new ArrayList<String>();
