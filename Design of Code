@@ -28,7 +28,7 @@ Needs a class to handle specifications:
     Type IDs are as follows:
         Elective (1)
         Regents
-        AP (Double Period) (3)
+        AP (3)
   CourseOffering:
     Can only be at one place at one time
     Has a limited amount of space available (random between 1 and 5)

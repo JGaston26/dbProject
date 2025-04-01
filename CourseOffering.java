@@ -1,18 +1,18 @@
 import java.util.ArrayList;
 public class CourseOffering {
-    private boolean isAPClass;
     private int timesAvailable;
     private ArrayList<Integer> periodsInUse = new ArrayList<>();
     private ArrayList<String> roomsInUse = new ArrayList<>();
     private int courseId;
     private Teacher teacher;
     private int id;
-    public CourseOffering(int courseId, Teacher teacher, int id, boolean isAP){
+    private Room room;
+    public CourseOffering(int courseId, Teacher teacher, int id, Room room){
         timesAvailable= (int)(Math.random()*6);
         this.courseId=courseId;
         this.teacher=teacher;
         this.id=id;
-        isAPClass = isAP;
+        this.room = room;
     }
 
     public void addPeriodInuse(int x){
@@ -27,6 +27,9 @@ public class CourseOffering {
 
     public void decrementTimesAvailable(){
         timesAvailable--;
+    }
+    public int getTimesAvailable(){
+        return timesAvailable;
     }
     public boolean canBeUsed(){
         return timesAvailable!=0;

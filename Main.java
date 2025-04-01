@@ -87,19 +87,22 @@ public class Main {
         /*
             When assigning teachers to courses its important to note:
             Teachers cannot teach 2 classes at the same time, so make sure to check they are available in the period we're checking for
-            also for AP classes the teacher needs to be available for the double, so make sure thats also good to go.
-            We can use random courses
 
             Step 1: Select random teacher and course to create a course offering
             Step 2: Using the times available, properly remove periods available from the room/teacher objects and make sure to account for APs
             Step 3: Run until no more teacher periods / rooms to use etc etc
          */
         ArrayList<CourseOffering> returnList = new ArrayList<>();
-        ArrayList<CourseOffering>
         int courseOfferingId=1;
-        for(int i = 0; i < 500; i++){
-            returnList.add(CourseOffering(courseOfferingId,))
+        for(int i =0; i < teachers.size(); i++){
+            Teacher currentTeacher = teachers.get(i);
+            int room = 1;
+            CourseOffering currentCourseOffering = new CourseOffering((int)(Math.random()*courses.size()),currentTeacher,courseOfferingId,rooms.get(room));
+            while(!currentTeacher.getAvailablePeriods().isEmpty() && ){
+
+            }
         }
+
         return null;
     }
     public static ArrayList<String> getFileData(String fileName) {
