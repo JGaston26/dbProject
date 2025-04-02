@@ -17,8 +17,10 @@ public class Main {
         ArrayList<Room> roomData = createRooms(roomNames);
         ArrayList<CourseOffering> courseOfferingData = createCourseOffering(courseData,teacherData,roomData);
 
+        
         System.out.println(courseOfferingData);
         System.out.println(courseOfferingData.size());
+        TypesAndDepts.printTypesAndDepts();
 
     }
 
