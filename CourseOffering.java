@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 public class CourseOffering {
     private ArrayList<Integer> periodsInUse = new ArrayList<>();
-    private ArrayList<String> roomsInUse = new ArrayList<>();
+    private ArrayList<Integer> roomsInUse = new ArrayList<>();
     private int courseId;
     private Teacher teacher;
     private int id;
@@ -16,10 +16,10 @@ public class CourseOffering {
     public void addPeriodInuse(int x){
         periodsInUse.add(x);
     }
-    public void addRoomsInUse(String room){
+    public void addRoomsInUse(int room){
         roomsInUse.add(room);
     }
-    public ArrayList<String> getRoomsInUse(){
+    public ArrayList<Integer> getRoomsInUse(){
         return roomsInUse;
     }
 

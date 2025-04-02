@@ -13,6 +13,7 @@ public class Room {
     public String getName(){
         return name;
     }
+    public int getID(){return id;}
     public void removePeriod(int period){
         ArrayList<Integer> returnArray = new ArrayList<>();
 

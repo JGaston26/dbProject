@@ -24,7 +24,7 @@ public class Main {
 
     public static ArrayList<Teacher> createTeachers(ArrayList<String> teacherNames){
         ArrayList<Teacher> returnList = new ArrayList<>();
-        int deptId=1;
+        int deptId=0;
         int teacherId=1;
         for(String name: teacherNames){
             if(name.equals("NEWDEPT")){deptId++;}
@@ -100,12 +100,16 @@ public class Main {
             int earliestAvailablePeriod = 1;
             boolean terminate = false;
             int timesAvailableRand = (int)(Math.random()*6);
+            ArrayList<Integer> periodsToAdd = new ArrayList<>();
+            ArrayList<Integer> roomsToAdd = new ArrayList<>();
             for(int r = 0; r < timesAvailableRand; r++){
                 for(int j = 1; j < 11; j++){
                     if(currentTeacher.getAvailablePeriods().contains((j)) && rooms.get(room).getAvailablePeriods().contains(j)){
                         earliestAvailablePeriod=j;
                         currentTeacher.removePeriod(j);
                         rooms.get(room).removePeriod(j);
+                        periodsToAdd.add(j);
+                        roomsToAdd.add(rooms.get(room).getID());
                         break;
                     }
                     //max teacher + max rooms case
@@ -129,8 +133,22 @@ public class Main {
             if(terminate)break;
 
             CourseOffering currentCourseOffering = new CourseOffering((int)(Math.random()*courses.size()),currentTeacher,courseOfferingId,rooms.get(room));
+            //add periods / rooms in use
+            for(int x = 0; x < periodsToAdd.size(); x++){
+                currentCourseOffering.addPeriodInuse(periodsToAdd.get(x));
+                currentCourseOffering.addRoomsInUse(roomsToAdd.get(x));
+            }
+
             courseOfferingId++;
             returnList.add(currentCourseOffering);
+        }
+
+        for(int i = 0; i < returnList.size(); i++){
+            for(int j = 0; j < returnList.get(i).getRoomsInUse().size(); j++){
+                System.out.println("INSERT INTO CourseOffering(StudentID, CourseOfferingID, Period, RoomID, CourseID, TeacherID) VALUES " + "(" + "Replace Me Later," +
+                        returnList.get(i).getRoomsInUse().get(j));
+            }
+
         }
 
         return returnList;
