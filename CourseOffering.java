@@ -6,6 +6,7 @@ public class CourseOffering {
     private int courseID;
     private Teacher teacher;
     private Room room;
+    private int enrolled= 0;
     public CourseOffering(ArrayList<Integer> courseOfferingIds, Teacher teacher, Room room, int courseID){
         this.courseOfferingIds=courseOfferingIds;
         this.courseID = courseID;
@@ -26,4 +27,5 @@ public class CourseOffering {
     public ArrayList<Integer> getCourseOfferingIds(){return courseOfferingIds;}
     public int getCourse(){return courseID;}
     public int getTeacherID(){return teacher.getId();}
+
 }

@@ -18,9 +18,10 @@ public class Main {
         ArrayList<Student> studentData = createStudents(studentNames);
         ArrayList<Room> roomData = createRooms(roomNames);
         ArrayList<CourseOffering> courseOfferingData = createCourseOffering(courseData,teacherData,roomData);
-
+        ArrayList<Schedule> scheduleData = createSchedules(studentData,courseOfferingData);
         System.out.println(courseOfferingData);
         System.out.println(courseOfferingData.size());
+        System.out.println(scheduleData.size());
 
     }
 
@@ -75,31 +76,21 @@ public class Main {
         for(String name: courses){
             int typeId=1;
             if(name.contains("Common Core") || name.contains("Regents")) typeId= 2;
-            else if(name.contains("AP ")){
-                typeId=3;
-                apCourses.add(new Course(name, courseID,typeId));
-            }
-            returnList.add(new Course(name, courseID,typeId));
+            else if(name.contains("AP ")){typeId=3;}
+
+            returnList.add(new Course(name, typeId,courseID));
             courseID++;
         }
 
         return returnList;
     }
     public static ArrayList<CourseOffering> createCourseOffering(ArrayList<Course> courses, ArrayList<Teacher> teachers, ArrayList<Room> rooms){
-        /*
-            When assigning teachers to courses its important to note:
-            Teachers cannot teach 2 classes at the same time, so make sure to check they are available in the period we're checking for
 
-            Step 1: Select random teacher and course to create a course offering
-            Step 2: Using the times available, properly remove periods available from the room/teacher objects and make sure to account for APs
-            Step 3: Run until no more teacher periods / rooms to use etc etc
-         */
         ArrayList<CourseOffering> returnList = new ArrayList<>();
         int courseOfferingId=1;
-        for(int i =0; i < teachers.size(); i++){
-            Teacher currentTeacher = teachers.get(i);
+        for(int i =0; i < courses.size(); i++){
+            Teacher currentTeacher = teachers.get(0);
             int room = 1;
-            int earliestAvailablePeriod = 1;
             boolean terminate = false;
             int timesAvailableRand = (int)(Math.random()*6);
             ArrayList<Integer> periodsToAdd = new ArrayList<>();
@@ -107,7 +98,6 @@ public class Main {
             for(int r = 0; r < timesAvailableRand; r++){
                 for(int j = 1; j < 11; j++){
                     if(currentTeacher.getAvailablePeriods().contains((j)) && rooms.get(room).getAvailablePeriods().contains(j)){
-                        earliestAvailablePeriod=j;
                         currentTeacher.removePeriod(j);
                         rooms.get(room).removePeriod(j);
                         periodsToAdd.add(j);
@@ -122,7 +112,9 @@ public class Main {
                     //max rooms, not maxed teachers case
                     else if(room==rooms.size()-1 && j==10 && currentTeacher!=teachers.getLast()){
                         currentTeacher=teachers.get(i+1);
-                        i++;
+                        j = 0;
+                        room = 1;
+
                     }
                     //maxed period case
                     else if(j==10){
@@ -135,14 +127,15 @@ public class Main {
             if(terminate)break;
             ArrayList<Integer> idListToUse = new ArrayList<>();
             for(int z = courseOfferingId; z < timesAvailableRand+courseOfferingId; z++){
-                System.out.println(z);
                 idListToUse.add(z);
             }
-            CourseOffering currentCourseOffering = new CourseOffering(idListToUse,currentTeacher, rooms.get(room), courses.get((int)(Math.random()*courses.size())).getId());
+            CourseOffering currentCourseOffering = new CourseOffering(idListToUse
+                    ,currentTeacher
+                    , rooms.get(room)
+                    , courses.get(i).getId());
 
             //add periods / rooms in use
             for(int x = 0; x < periodsToAdd.size(); x++){
-                System.out.println(periodsToAdd);
                 currentCourseOffering.addPeriodInuse(periodsToAdd.get(x));
                 currentCourseOffering.addRoomsInUse(roomsToAdd.get(x));
             }
@@ -153,7 +146,6 @@ public class Main {
 
         for (CourseOffering courseOffering : returnList) {
             for (int j = 0; j < courseOffering.getCourseOfferingIds().size(); j++) {
-                System.out.println(courseOffering.getCourseOfferingIds().toString());
                 System.out.println("INSERT INTO CourseOffering( CourseOfferingID, Period, RoomID, CourseID, TeacherID) VALUES "
                         + "(" + courseOffering.getCourseOfferingIds().get(j)
                         + "," + courseOffering.getPeriodsInUse().get(j)
@@ -163,6 +155,19 @@ public class Main {
 
             }
 
+        }
+
+        return returnList;
+    }
+    public static ArrayList<Schedule> createSchedules(ArrayList<Student> students, ArrayList<CourseOffering> courseOfferings){
+        ArrayList<Schedule> returnList = new ArrayList<>();
+        int scheduleID=1;
+        for(Student student: students){
+            for(int i = 1; i<11; i++){
+                Schedule currentSchedule = new Schedule(scheduleID,student,courseOfferings.get((int)(Math.random()*courseOfferings.size())));
+                student.removePeriod(i);
+                returnList.add(currentSchedule);
+            }
         }
 
         return returnList;

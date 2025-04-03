@@ -20,15 +20,6 @@ public class Student {
         availablePeriods=returnArray;
     }
 
-    public boolean checkIfPeriodExists(int period){
-        for(Integer periodIn: availablePeriods){
-            if(periodIn==period){
-                return true;
-            }
-        }
-        return false;
-    }
-
     public ArrayList<Integer> getAvailablePeriods(){
         return availablePeriods;
     }
