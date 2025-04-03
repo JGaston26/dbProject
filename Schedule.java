@@ -12,6 +12,7 @@ public class Schedule {
     public int getStudentID(){
         return student.getId();
     }
+    public Student getStudent(){return student;}
     public CourseOffering getCourseOffering(){
         return CourseOffering;
     }

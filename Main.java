@@ -19,9 +19,11 @@ public class Main {
         ArrayList<Room> roomData = createRooms(roomNames);
         ArrayList<CourseOffering> courseOfferingData = createCourseOffering(courseData,teacherData,roomData);
         ArrayList<Schedule> scheduleData = createSchedules(studentData,courseOfferingData);
+        ArrayList<Assignment> assignmentData = createAssignment(scheduleData);
         System.out.println(courseOfferingData);
         System.out.println(courseOfferingData.size());
         System.out.println(scheduleData.size());
+        System.out.println(assignmentData.size());
 
     }
 
@@ -180,6 +182,25 @@ public class Main {
                     returnList.get(i).getID() + "," +
                     returnList.get(i).getStudentID() + "," +
                     returnList.get(i).getCourseOffering().getAvailableIdIndex() +")");
+        }
+
+        return returnList;
+    }
+    public static ArrayList<Assignment> createAssignment(ArrayList<Schedule> studentSchedule){
+        ArrayList<Assignment> returnList = new ArrayList<>();
+        int count = 1;
+        for(Schedule schedule: studentSchedule){
+            for(int i = 0; i< 15; i++){
+                int typeId=1;
+                if(i>11){
+                    typeId=2;
+                }
+
+                Assignment current = new Assignment(count,schedule.getID(),schedule.getCourseOffering().getAvailableIdIndex(),schedule.getStudent());
+                returnList.add(current);
+                count++;
+            }
+
         }
 
         return returnList;

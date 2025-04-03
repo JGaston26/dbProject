@@ -40,4 +40,7 @@ Needs a class to handle specifications:
     Has an Id
     Has a Name
     Can only be used at one place at a time
+  Assignment:
+    Minor (1)
+    Major (2)
   
