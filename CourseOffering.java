@@ -7,6 +7,7 @@ public class CourseOffering {
     private Teacher teacher;
     private Room room;
     private int enrolled= 0;
+    private int availableIdIndex = 0;
     public CourseOffering(ArrayList<Integer> courseOfferingIds, Teacher teacher, Room room, int courseID){
         this.courseOfferingIds=courseOfferingIds;
         this.courseID = courseID;
@@ -27,5 +28,22 @@ public class CourseOffering {
     public ArrayList<Integer> getCourseOfferingIds(){return courseOfferingIds;}
     public int getCourse(){return courseID;}
     public int getTeacherID(){return teacher.getId();}
+    public void checkEnrolled(){
+        enrolled++;
+        if(enrolled > 50){
+            enrolled = 0;
+            availableIdIndex++;
+        }
+    }
+    public int getAvailableIdIndex(){
+        if(courseOfferingIds.isEmpty()){
+            return -1;
+        }
+        if(availableIdIndex>=courseOfferingIds.size()){
+            return courseOfferingIds.get((int)(Math.random()*courseOfferingIds.size()));
+        }
+        return courseOfferingIds.get(availableIdIndex);
+    }
+
 
 }

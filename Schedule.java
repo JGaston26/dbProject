@@ -9,8 +9,8 @@ public class Schedule {
         this.CourseOffering=courseOffering;
     }
 
-    public Student getStudentID(){
-        return student;
+    public int getStudentID(){
+        return student.getId();
     }
     public CourseOffering getCourseOffering(){
         return CourseOffering;

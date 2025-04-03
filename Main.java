@@ -164,10 +164,22 @@ public class Main {
         int scheduleID=1;
         for(Student student: students){
             for(int i = 1; i<11; i++){
-                Schedule currentSchedule = new Schedule(scheduleID,student,courseOfferings.get((int)(Math.random()*courseOfferings.size())));
+                CourseOffering current = courseOfferings.get((int)(Math.random()*courseOfferings.size()));
+                while(current.getAvailableIdIndex()==-1){
+                    current = courseOfferings.get((int)(Math.random()*courseOfferings.size()));
+                }
+                current.checkEnrolled();
+                Schedule currentSchedule = new Schedule(scheduleID,student,current);
                 student.removePeriod(i);
                 returnList.add(currentSchedule);
+                scheduleID++;
             }
+        }
+        for(int i = 0; i < returnList.size(); i++){
+            System.out.println("INSERT INTO Schedules( ScheduleID integer, StudentID integer, CourseOfferingID integer) VALUES " + "(" +
+                    returnList.get(i).getID() + "," +
+                    returnList.get(i).getStudentID() + "," +
+                    returnList.get(i).getCourseOffering().getAvailableIdIndex() +")");
         }
 
         return returnList;
