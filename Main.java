@@ -11,16 +11,16 @@ public class Main {
         ArrayList<String> roomNames = getFileData("Rooms");
         ArrayList<String> courseNames = getFileData("Classes");
 
+        TypesAndDepts.printTypesAndDepts();
+
         ArrayList<Course> courseData = createCourses(courseNames);
         ArrayList<Teacher> teacherData = createTeachers(teacherNames);
         ArrayList<Student> studentData = createStudents(studentNames);
         ArrayList<Room> roomData = createRooms(roomNames);
         ArrayList<CourseOffering> courseOfferingData = createCourseOffering(courseData,teacherData,roomData);
 
-        
         System.out.println(courseOfferingData);
         System.out.println(courseOfferingData.size());
-        TypesAndDepts.printTypesAndDepts();
 
     }
 
