@@ -133,22 +133,34 @@ public class Main {
                 if(terminate)break;
             }
             if(terminate)break;
+            ArrayList<Integer> idListToUse = new ArrayList<>();
+            for(int z = courseOfferingId; z < timesAvailableRand+courseOfferingId; z++){
+                System.out.println(z);
+                idListToUse.add(z);
+            }
+            CourseOffering currentCourseOffering = new CourseOffering(idListToUse,currentTeacher, rooms.get(room), courses.get((int)(Math.random()*courses.size())).getId());
 
-            CourseOffering currentCourseOffering = new CourseOffering((int)(Math.random()*courses.size()),currentTeacher,courseOfferingId,rooms.get(room));
             //add periods / rooms in use
             for(int x = 0; x < periodsToAdd.size(); x++){
+                System.out.println(periodsToAdd);
                 currentCourseOffering.addPeriodInuse(periodsToAdd.get(x));
                 currentCourseOffering.addRoomsInUse(roomsToAdd.get(x));
             }
 
-            courseOfferingId++;
+            courseOfferingId+= timesAvailableRand+1;
             returnList.add(currentCourseOffering);
         }
 
-        for(int i = 0; i < returnList.size(); i++){
-            for(int j = 0; j < returnList.get(i).getRoomsInUse().size(); j++){
-                System.out.println("INSERT INTO CourseOffering(StudentID, CourseOfferingID, Period, RoomID, CourseID, TeacherID) VALUES " + "(" + "Replace Me Later," +
-                        returnList.get(i).getRoomsInUse().get(j));
+        for (CourseOffering courseOffering : returnList) {
+            for (int j = 0; j < courseOffering.getCourseOfferingIds().size(); j++) {
+                System.out.println(courseOffering.getCourseOfferingIds().toString());
+                System.out.println("INSERT INTO CourseOffering( CourseOfferingID, Period, RoomID, CourseID, TeacherID) VALUES "
+                        + "(" + courseOffering.getCourseOfferingIds().get(j)
+                        + "," + courseOffering.getPeriodsInUse().get(j)
+                        + "," + courseOffering.getRoomsInUse().get(j)
+                        + "," + courseOffering.getCourse()
+                        + "," + courseOffering.getTeacherID() +")" );
+
             }
 
         }

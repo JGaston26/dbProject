@@ -2,14 +2,14 @@ import java.util.ArrayList;
 public class CourseOffering {
     private ArrayList<Integer> periodsInUse = new ArrayList<>();
     private ArrayList<Integer> roomsInUse = new ArrayList<>();
-    private int courseId;
+    private ArrayList<Integer> courseOfferingIds;
+    private int courseID;
     private Teacher teacher;
-    private int id;
     private Room room;
-    public CourseOffering(int courseId, Teacher teacher, int id, Room room){
-        this.courseId=courseId;
+    public CourseOffering(ArrayList<Integer> courseOfferingIds, Teacher teacher, Room room, int courseID){
+        this.courseOfferingIds=courseOfferingIds;
+        this.courseID = courseID;
         this.teacher=teacher;
-        this.id=id;
         this.room = room;
     }
 
@@ -22,5 +22,8 @@ public class CourseOffering {
     public ArrayList<Integer> getRoomsInUse(){
         return roomsInUse;
     }
-
+    public ArrayList<Integer> getPeriodsInUse(){return periodsInUse;}
+    public ArrayList<Integer> getCourseOfferingIds(){return courseOfferingIds;}
+    public int getCourse(){return courseID;}
+    public int getTeacherID(){return teacher.getId();}
 }
