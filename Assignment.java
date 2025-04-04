@@ -6,14 +6,16 @@ public class Assignment {
     private double grade;
 
     public Assignment(int id, int courseOfferingID, int assignmentTypeId, Student student){
-        grade = (int)(Math.random()*26+75 * 100) / 100.0;
+        grade = (int)((Math.random()*26+74) * 100) / 100.0;
         this.id=id;
         this.courseOfferingID=courseOfferingID;
         this.assignmentTypeId=assignmentTypeId;
         this.student=student;
 
     }
-
+    public int getId(){
+        return id;
+    }
     public int getStudentId(){
         return student.getId();
     }

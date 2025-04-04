@@ -11,5 +11,6 @@ public class Course {
     public int getId(){
         return id;
     }
-
+    public String getName(){return name;}
+    public int getTypeId(){return typeId;}
 }

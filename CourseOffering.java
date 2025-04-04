@@ -44,6 +44,4 @@ public class CourseOffering {
         }
         return courseOfferingIds.get(availableIdIndex);
     }
-
-
 }

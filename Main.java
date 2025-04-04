@@ -20,10 +20,6 @@ public class Main {
         ArrayList<CourseOffering> courseOfferingData = createCourseOffering(courseData,teacherData,roomData);
         ArrayList<Schedule> scheduleData = createSchedules(studentData,courseOfferingData);
         ArrayList<Assignment> assignmentData = createAssignment(scheduleData);
-        System.out.println(courseOfferingData);
-        System.out.println(courseOfferingData.size());
-        System.out.println(scheduleData.size());
-        System.out.println(assignmentData.size());
 
     }
 
@@ -54,9 +50,7 @@ public class Main {
             returnList.add(new Student(studentId));
             studentId++;
         }
-        for(int i=0; i< returnList.size(); i++){
-           // System.out.println(returnList.get(i).getId());
-        }
+
         return returnList;
     }
     public static ArrayList<Room> createRooms(ArrayList<String> rooms){
@@ -67,7 +61,7 @@ public class Main {
             roomId++;
         }
         for(int i=1; i< returnList.size(); i++){
-            System.out.println("INSERT INTO Rooms( RoomID, RoomName) VALUES " +
+            System.out.println("INSERT INTO Rooms( RoomID, RoomName ) VALUES " +
                     "("+ i + ", '" + returnList.get(i).getName() + "');");
         }
         return returnList;
@@ -82,6 +76,12 @@ public class Main {
 
             returnList.add(new Course(name, typeId,courseID));
             courseID++;
+        }
+        for(Course course : returnList){
+            System.out.println("INSERT INTO Courses(CourseID integer, CourseName, TypeID) VALUES " + "(" +
+                    course.getId() + "," +
+                    course.getName() + "," +
+                    course.getTypeId()+ ")");
         }
 
         return returnList;
@@ -201,6 +201,14 @@ public class Main {
                 count++;
             }
 
+        }
+        for(Assignment assignment: returnList){
+            System.out.println("INSERT INTO Assignments ( AssignmentID integer, CourseOfferingID integer, AssignmentTypeID integer, StudentID integer, Grade FLOAT ) VALUES " + "(" +
+                    assignment.getId() + "," +
+                    assignment.getCourseOfferingId() + "," +
+                    assignment.getAssignmentTypeId() +"," +
+                    assignment.getStudentId() + "," +
+                    assignment.getGrade() + ")");
         }
 
         return returnList;
