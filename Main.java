@@ -107,12 +107,12 @@ public class Main {
                         break;
                     }
                     //max teacher + max rooms case
-                    if(room==rooms.size()-1 && currentTeacher==teachers.getLast() && j==10){
+                    if(room==rooms.size()-1 && currentTeacher==teachers.get(teachers.size()-1) && j==10){
                         terminate=true;
                         break;
                     }
                     //max rooms, not maxed teachers case
-                    else if(room==rooms.size()-1 && j==10 && currentTeacher!=teachers.getLast()){
+                    else if(room==rooms.size()-1 && j==10 && currentTeacher!=teachers.get(teachers.size()-1)){
                         currentTeacher=teachers.get(i+1);
                         j = 0;
                         room = 1;
@@ -196,7 +196,7 @@ public class Main {
                     typeId=2;
                 }
 
-                Assignment current = new Assignment(count,schedule.getID(),schedule.getCourseOffering().getAvailableIdIndex(),schedule.getStudent());
+                Assignment current = new Assignment(count,schedule.getID(),typeId,schedule.getStudent());
                 returnList.add(current);
                 count++;
             }
