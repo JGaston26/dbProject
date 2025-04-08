@@ -2,22 +2,22 @@ public class Assignment {
     private int id;
     private int courseOfferingID;
     private int assignmentTypeId;
-    private Student student;
+    private int scheduleID;
     private double grade;
 
-    public Assignment(int id, int courseOfferingID, int assignmentTypeId, Student student){
+    public Assignment(int id, int courseOfferingID, int assignmentTypeId, int scheduleID){
         grade = (int)((Math.random()*25+75) * 100) / 100.0;
         this.id=id;
         this.courseOfferingID=courseOfferingID;
         this.assignmentTypeId=assignmentTypeId;
-        this.student=student;
+        this.scheduleID = scheduleID;
 
     }
     public int getId(){
         return id;
     }
-    public int getStudentId(){
-        return student.getId();
+    public int getScheduleID(){
+        return scheduleID;
     }
     public int getAssignmentTypeId(){
         return assignmentTypeId;

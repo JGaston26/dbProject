@@ -196,7 +196,7 @@ public class Main {
                     typeId=2;
                 }
 
-                Assignment current = new Assignment(count,schedule.getID(),typeId,schedule.getStudent());
+                Assignment current = new Assignment(count,schedule.getCourseOffering().getAvailableIdIndex(),typeId,schedule.getID());
                 returnList.add(current);
                 count++;
             }
@@ -207,7 +207,7 @@ public class Main {
                     assignment.getId() + "," +
                     assignment.getCourseOfferingId() + "," +
                     assignment.getAssignmentTypeId() +"," +
-                    assignment.getStudentId() + "," +
+                    assignment.getScheduleID() + "," +
                     assignment.getGrade() + ")");
         }
 
