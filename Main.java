@@ -78,7 +78,7 @@ public class Main {
             courseID++;
         }
         for(Course course : returnList){
-            System.out.println("INSERT INTO Courses(CourseID integer, CourseName, TypeID) VALUES " + "(" +
+            System.out.println("INSERT INTO Courses(CourseID, CourseName, TypeID) VALUES " + "(" +
                     course.getId() + "," +
                     course.getName() + "," +
                     course.getTypeId()+ ")");
@@ -178,7 +178,7 @@ public class Main {
             }
         }
         for(int i = 0; i < returnList.size(); i++){
-            System.out.println("INSERT INTO Schedules( ScheduleID integer, StudentID integer, CourseOfferingID integer) VALUES " + "(" +
+            System.out.println("INSERT INTO Schedules( ScheduleID, StudentID, CourseOfferingID) VALUES " + "(" +
                     returnList.get(i).getID() + "," +
                     returnList.get(i).getStudentID() + "," +
                     returnList.get(i).getCourseOffering().getAvailableIdIndex() +")");
@@ -203,7 +203,7 @@ public class Main {
 
         }
         for(Assignment assignment: returnList){
-            System.out.println("INSERT INTO Assignments ( AssignmentID integer, CourseOfferingID integer, AssignmentTypeID integer, StudentID integer, Grade FLOAT ) VALUES " + "(" +
+            System.out.println("INSERT INTO Assignments ( AssignmentID, CourseOfferingID, AssignmentTypeID, StudentID, Grade ) VALUES " + "(" +
                     assignment.getId() + "," +
                     assignment.getCourseOfferingId() + "," +
                     assignment.getAssignmentTypeId() +"," +
