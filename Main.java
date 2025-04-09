@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    static ArrayList<Course> apCourses = new ArrayList<>();
     public static void main(String[] args) {
         ArrayList<String> studentNames = getFileData("Students");
         ArrayList<String> teacherNames = getFileData("TeachersAndDepartments"); //no dupes
@@ -148,7 +147,7 @@ public class Main {
 
         for (CourseOffering courseOffering : returnList) {
             for (int j = 0; j < courseOffering.getCourseOfferingIds().size(); j++) {
-                System.out.println("INSERT INTO CourseOffering( CourseOfferingID, Period, RoomID, CourseID, TeacherID) VALUES "
+                System.out.println("INSERT INTO CourseOfferings( CourseOfferingID, Period, RoomID, CourseID, TeacherID) VALUES "
                         + "(" + courseOffering.getCourseOfferingIds().get(j)
                         + "," + courseOffering.getPeriodsInUse().get(j)
                         + "," + courseOffering.getRoomsInUse().get(j)
