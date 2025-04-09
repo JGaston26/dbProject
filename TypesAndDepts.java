@@ -1,6 +1,6 @@
 public class TypesAndDepts {
     private static String[] depts = {"Biology", "Chemistry", "Computer Science", "English", "Health and PE", "Mathematics", "Physics", "Social Studies", "Special Education",
-                                "Visual and Performing Arts", "Foreign Languages and ENL", "College Office Staff List", "COSA", "Health and Safety"};
+                                "Visual and Performing Arts", "Foreign Languages and ENL", "College Office Staff List", "COSA", "Guidance Counselors", "Health and Safety"};
 
     public static void printTypesAndDepts() {
         for (int i = 1; i <= depts.length; i++){
