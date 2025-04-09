@@ -78,8 +78,8 @@ public class Main {
         }
         for(Course course : returnList){
             System.out.println("INSERT INTO Courses(CourseID, CourseName, TypeID) VALUES " + "(" +
-                    course.getId() + "," +
-                    course.getName() + "," +
+                    course.getId() + ", '" +
+                    course.getName() + "'," +
                     course.getTypeId()+ ")");
         }
 
