@@ -80,7 +80,7 @@ public class Main {
             System.out.println("INSERT INTO Courses(CourseID, CourseName, TypeID) VALUES " + "(" +
                     course.getId() + ", '" +
                     "'" + course.getName() + "'," +
-                    course.getTypeId()+ ")");
+                    course.getTypeId()+ ");");
         }
 
         return returnList;
@@ -152,7 +152,7 @@ public class Main {
                         + "," + courseOffering.getPeriodsInUse().get(j)
                         + "," + courseOffering.getRoomsInUse().get(j)
                         + "," + courseOffering.getCourse()
-                        + "," + courseOffering.getTeacherID() +")" );
+                        + "," + courseOffering.getTeacherID() +");" );
 
             }
 
@@ -180,7 +180,7 @@ public class Main {
             System.out.println("INSERT INTO Schedules( ScheduleID, StudentID, CourseOfferingID) VALUES " + "(" +
                     returnList.get(i).getID() + "," +
                     returnList.get(i).getStudentID() + "," +
-                    returnList.get(i).getCourseOffering().getAvailableIdIndex() +")");
+                    returnList.get(i).getCourseOffering().getAvailableIdIndex() +");");
         }
 
         return returnList;
@@ -207,7 +207,7 @@ public class Main {
                     assignment.getCourseOfferingId() + "," +
                     assignment.getAssignmentTypeId() +"," +
                     assignment.getScheduleID() + "," +
-                    assignment.getGrade() + ")");
+                    assignment.getGrade() + ");");
         }
 
         return returnList;
