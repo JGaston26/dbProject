@@ -202,7 +202,7 @@ public class Main {
 
         }
         for(Assignment assignment: returnList){
-            System.out.println("INSERT INTO Assignments ( AssignmentID, CourseOfferingID, AssignmentTypeID, StudentID, Grade ) VALUES " + "(" +
+            System.out.println("INSERT INTO Assignments ( AssignmentID, CourseOfferingID, AssignmentTypeID, ScheduleID, Grade ) VALUES " + "(" +
                     assignment.getId() + "," +
                     assignment.getCourseOfferingId() + "," +
                     assignment.getAssignmentTypeId() +"," +
