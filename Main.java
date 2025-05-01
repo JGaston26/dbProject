@@ -19,7 +19,6 @@ public class Main {
         ArrayList<CourseOffering> courseOfferingData = createCourseOffering(courseData,teacherData,roomData);
         ArrayList<Schedule> scheduleData = createSchedules(studentData,courseOfferingData);
         ArrayList<Assignment> assignmentData = createAssignment(scheduleData);
-
     }
 
     public static ArrayList<Teacher> createTeachers(ArrayList<String> teacherNames){
@@ -34,12 +33,14 @@ public class Main {
             }
 
         }
+        System.out.println("INSERT INTO Teachers(TeacherID,TeacherName,DepartmentID) VALUES");
         for(int i=0; i<returnList.size(); i++){
-            System.out.println("INSERT INTO Teachers(TeacherID,TeacherName,DepartmentID) " +
-                    "VALUES (" + returnList.get(i).getId() +
+            System.out.print(" (" + returnList.get(i).getId() +
                     ", '" + returnList.get(i).getName() + "', " +
-                    returnList.get(i).getDepartment() + " );" );
+                    returnList.get(i).getDepartment() + " )" );
+            if (i != returnList.size() - 1) System.out.println(",");
         }
+        System.out.println(";");
         return returnList;
     }
     public static ArrayList<Student> createStudents(ArrayList<String> studentNames) {
@@ -59,10 +60,12 @@ public class Main {
             returnList.add(new Room(roomId, name));
             roomId++;
         }
+        System.out.println("INSERT INTO Rooms( RoomID, RoomName ) VALUES ");
         for(int i=1; i< returnList.size(); i++){
-            System.out.println("INSERT INTO Rooms( RoomID, RoomName ) VALUES " +
-                    "("+ i + ", '" + returnList.get(i).getName() + "');");
+            System.out.print("("+ i + ", '" + returnList.get(i).getName() + "')");
+            if (i != returnList.size() - 1) System.out.println(",");
         }
+        System.out.println(";");
         return returnList;
     }
     public static ArrayList<Course> createCourses(ArrayList<String> courses){
@@ -76,12 +79,18 @@ public class Main {
             returnList.add(new Course(name, typeId,courseID));
             courseID++;
         }
+
+        int i = 0;
+        System.out.println("INSERT INTO Courses(CourseID, CourseName, TypeID) VALUES ");
         for(Course course : returnList){
-            System.out.println("INSERT INTO Courses(CourseID, CourseName, TypeID) VALUES " + "(" +
+            System.out.print("(" +
                     course.getId() + ", '" +
                     course.getName() + "'," +
-                    course.getTypeId()+ ");");
+                    course.getTypeId()+ ")");
+            if (i != returnList.size() - 1) System.out.println(",");
+            i++;
         }
+        System.out.println(";");
 
         return returnList;
     }
@@ -145,18 +154,20 @@ public class Main {
             returnList.add(currentCourseOffering);
         }
 
+        int i = 0;
+        System.out.println("INSERT INTO CourseOfferings( CourseOfferingID, Period, RoomID, CourseID, TeacherID) VALUES ");
         for (CourseOffering courseOffering : returnList) {
             for (int j = 0; j < courseOffering.getCourseOfferingIds().size(); j++) {
-                System.out.println("INSERT INTO CourseOfferings( CourseOfferingID, Period, RoomID, CourseID, TeacherID) VALUES "
-                        + "(" + courseOffering.getCourseOfferingIds().get(j)
+                System.out.print("(" + courseOffering.getCourseOfferingIds().get(j)
                         + "," + courseOffering.getPeriodsInUse().get(j)
                         + "," + courseOffering.getRoomsInUse().get(j)
                         + "," + courseOffering.getCourse()
-                        + "," + courseOffering.getTeacherID() +");" );
-
+                        + "," + courseOffering.getTeacherID() +")" );
+                if ((i != returnList.size() - 1)) System.out.println(",");
             }
-
+            i++;
         }
+        System.out.println(";");
 
         return returnList;
     }
@@ -177,10 +188,13 @@ public class Main {
             }
         }
         for(int i = 0; i < returnList.size(); i++){
-            System.out.println("INSERT INTO Schedules( ScheduleID, StudentID, CourseOfferingID) VALUES " + "(" +
+            if (i % 1000 == 0) System.out.println("INSERT INTO Schedules( ScheduleID, StudentID, CourseOfferingID) VALUES ");
+            System.out.print("(" +
                     returnList.get(i).getID() + "," +
                     returnList.get(i).getStudentID() + "," +
-                    returnList.get(i).getCourseOffering().getAvailableIdIndex() +");");
+                    returnList.get(i).getCourseOffering().getAvailableIdIndex() +")");
+            if (i % 1000 == 999) System.out.println(";");
+            else System.out.println(",");
         }
 
         return returnList;
@@ -201,13 +215,18 @@ public class Main {
             }
 
         }
+        int i = 0;
         for(Assignment assignment: returnList){
-            System.out.println("INSERT INTO Assignments ( AssignmentID, CourseOfferingID, AssignmentTypeID, ScheduleID, Grade ) VALUES " + "(" +
+            if (i % 1000 == 0) System.out.println("INSERT INTO Assignments ( AssignmentID, CourseOfferingID, AssignmentTypeID, ScheduleID, Grade ) VALUES ");
+            System.out.print("(" +
                     assignment.getId() + "," +
                     assignment.getCourseOfferingId() + "," +
                     assignment.getAssignmentTypeId() +"," +
                     assignment.getScheduleID() + "," +
-                    assignment.getGrade() + ");");
+                    assignment.getGrade() + ")");
+            if (i % 1000 == 999) System.out.println(";");
+            else System.out.println(",");
+            i++;
         }
 
         return returnList;
