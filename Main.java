@@ -163,7 +163,7 @@ public class Main {
                         + "," + courseOffering.getRoomsInUse().get(j)
                         + "," + courseOffering.getCourse()
                         + "," + courseOffering.getTeacherID() +")" );
-                if ((i != returnList.size() - 1)) System.out.println(",");
+                if ((i != returnList.size() - 1) || (j != courseOffering.getCourseOfferingIds().size() - 1)) System.out.println(",");
             }
             i++;
         }
